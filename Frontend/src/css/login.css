@@ -1,0 +1,152 @@
+/* Main Container */
+.login-container {
+    display: flex;
+    width: 750px;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    position: relative;
+    background: linear-gradient(to right, #4d3826, #1e1b18);
+    /* Dark Metallic Gold */
+    transition: 0.5s ease-in-out;
+}
+
+/* Seeker & Provider Panels */
+.login-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Light Metallic Gold Side */
+.seeker-side {
+    background: linear-gradient(to bottom, #d4af7a, #b98e5a);
+    /* Light Gold */
+    color: #2e1e0f;
+    z-index: 2;
+}
+
+/* Dark Metallic Gold Side */
+.provider-side {
+    background: linear-gradient(to bottom, #3a2a1a, #1e1b18);
+    /* Dark Gold */
+    color: #f5c56d;
+    z-index: 1;
+}
+
+/* Hover Effect: Slight Lift */
+.login-side:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 215, 130, 0.7);
+}
+
+/* Active Selection */
+.provider-active .provider-side {
+    background: linear-gradient(to bottom, #d4af7a, #b98e5a);
+    /* Light Gold */
+    color: #2e1e0f;
+}
+
+.provider-active .seeker-side {
+    background: linear-gradient(to bottom, #3a2a1a, #1e1b18);
+    /* Dark Gold */
+    color: #f5c56d;
+}
+
+/* Headings */
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 60px;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+input {
+    width: 85%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #c9a26d;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #f7e8d3;
+    /* Light Soft Gold */
+    color: #2e1e0f;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #FFD700;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    width: 90%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #e6c58d, #d4af7a);
+    color: #2e1e0f;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(to right, #FFD700, #FFF8DC);
+    transform: scale(1.05);
+}
+
+/* Google Login Button */
+.google-login {
+    background: #c9a26d;
+    color: #2e1e0f;
+    border: 1px solid #f5c56d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.google-login img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.google-login:hover {
+    background-color: #f7e8d3;
+    transform: scale(1.05);
+}
+
+/* Toggle Text */
+p {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+    color: #FFD700;
+}
+
+p:hover {
+    opacity: 0.7;
+}
