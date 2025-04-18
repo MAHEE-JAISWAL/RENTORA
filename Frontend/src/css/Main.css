@@ -1,0 +1,30 @@
+.zebra-border {
+    border: 8px dashed transparent;
+    background:
+        linear-gradient(white, white) padding-box,
+        repeating-linear-gradient(45deg,
+            black 0,
+            black 10px,
+            white 10px,
+            white 20px) border-box;
+    padding: 12px;
+    width: 1380px;
+    height: 550px; /* 500px + padding */
+    /* 1100 + padding */
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.carousel-img {
+    width: 1300px;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.carousel-img:hover {
+    transform: scale(0.80);
+}

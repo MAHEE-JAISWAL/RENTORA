@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -13,14 +15,26 @@ export function Login() {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(""); // State to store error messages
+  const navigate = useNavigate(); // Hook for navigation
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login Form Submitted", form);
+    setError(""); // Clear previous error messages
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        form
+      );
+      localStorage.setItem("token", response.data.token); // Save token in localStorage
+      navigate("/"); // Redirect to the main page after successful login
+    } catch (error) {
+      setError(error.response?.data?.message || "Something went wrong");
+    }
   };
 
   return (
@@ -68,18 +82,18 @@ export function Login() {
                 variant="outlined"
                 margin="dense"
                 InputLabelProps={{
-                  style: { color: "black" }, // Label color
+                  style: { color: "black" },
                 }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "black", // Default border color
+                      borderColor: "black",
                     },
                     "&:hover fieldset": {
-                      borderColor: "black", // Hover border color
+                      borderColor: "black",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "black", // Focused border color
+                      borderColor: "black",
                     },
                   },
                 }}
@@ -94,22 +108,31 @@ export function Login() {
                 variant="outlined"
                 margin="dense"
                 InputLabelProps={{
-                  style: { color: "black" }, // Label color
+                  style: { color: "black" },
                 }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "& fieldset": {
-                      borderColor: "black", // Default border color
+                      borderColor: "black",
                     },
                     "&:hover fieldset": {
-                      borderColor: "black", // Hover border color
+                      borderColor: "black",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "black", // Focused border color
+                      borderColor: "black",
                     },
                   },
                 }}
               />
+              {error && (
+                <Typography
+                  variant="body2"
+                  color="error"
+                  sx={{ mt: 1, textAlign: "center" }}
+                >
+                  {error}
+                </Typography>
+              )}
               <Button
                 type="submit"
                 fullWidth
@@ -124,40 +147,6 @@ export function Login() {
                 Login
               </Button>
             </form>
-            <Typography
-              variant="body2"
-              align="center"
-              sx={{ mt: 2, color: "black" }}
-            >
-              Or
-            </Typography>
-            <Button
-              fullWidth
-              variant="outlined"
-              startIcon={
-                <img
-                  src="/Google-icon.png"
-                  alt="Google Icon"
-                  style={{ width: "20px", height: "20px" }}
-                />
-              }
-              sx={{
-                mt: 1,
-                color: "black",
-                borderColor: "black",
-                textTransform: "none",
-                fontWeight: "bold",
-                "&:hover": {
-                  backgroundColor: "#f5f5f5",
-                  borderColor: "black",
-                },
-              }}
-              onClick={() => {
-                console.log("Sign in with Google clicked");
-              }}
-            >
-              Sign in with Google
-            </Button>
             <Typography
               variant="body2"
               align="center"

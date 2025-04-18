@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import {
   Card,
   CardContent,
@@ -43,13 +44,18 @@ export function SignUp() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      console.log("Signup Form Submitted", form);
-    }
-  };
-
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/api/auth/signup",
+          form
+        );
+        alert(response.data.message);
+      } catch (error) {
+        alert(error.response?.data?.message || "Something went wrong");
+      }
+    };
   return (
     <div
       className="flex items-center justify-center min-h-screen bg-gray-100"
